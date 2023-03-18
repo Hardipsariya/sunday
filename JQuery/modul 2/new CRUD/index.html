@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD </title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+
+    <style>
+        table,
+        td,
+        tr {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+
+
+    <table id="tab">
+        <thead>
+
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <div id="form">
+
+        <input type="text" placeholder="Name" id="fullname">
+
+        <input type="email" placeholder="Email" id="email">
+
+        <label for="" style="margin-left: 20px; font-size: 30px;">Gender</label>
+        <input type="radio" name="gende" id="gender" value="male">Male
+        <input type="radio" name="gende" id="gender" value="femail">Female
+
+        <label for="" style="margin-left: 20px; font-size: 30px;">Status</label>
+        <input type="radio" name="status" id="status" value="active">Active
+        <input type="radio" name="status" id="status" value="inactive">Inactive
+
+        <button id="postbtn">POST</button>
+        <button id="updatebtn">UPDATE</button>
+
+    </div>
+
+
+
+
+
+    <button id="btn1">GET DATA </button>
+
+    <button id="sub">POST DATA</button>
+
+</body>
+
+<script>
+    $(document).ready(function () {
+        $("#form").hide();
+        $("#tab").hide();
+        $("#updatebtn").hide();
+
+        //###################################### Function for get data
+
+        $("#btn1").click(function () {
+            $("#tab").show();
+
+            var settings = {
+                "url": "https://gorest.co.in/public/v2/users",
+                "method": "GET",
+                "timeout": 0,
+                "headers": {
+                    "Accept": "application/json",
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer 5b4840c4797ec945735ee02f7bca6d76d1da4aad1fb00cf275ffde02a10eec94"
+                },
+            };
+            $("tbody").html(` <tr>
+                <td>id</td>
+                <td>Name</td>
+                <td>email</td>
+                <td>gender</td>
+                <td>status</td>
+                <td>Edit</td>
+            </tr>`)
+
+            $.ajax(settings).done(function (apidata) {
+                $.each(apidata, function (key, value) {
+                    $("tbody").append("<tr><td>" + value.id + "</td>" + "<td>" + value.name + "</td>" + "<td>" + value.email + "</td>" + "<td>" + value.gender + "</td>" + "<td>" + value.status + "</td>" + "<td><button id = del" + value.id + ">DELETE</button><button id = upd" + value.id + ">UPDATE</button></td>" + "</tr>");
+
+                    // #####################################for delete data
+
+
+                    $("#del" + value.id).click(function () {
+                        var settings = {
+                            "url": "https://gorest.co.in/public/v2/users/" + value.id,
+                            "method": "DELETE",
+                            "timeout": 0,
+                            "headers": {
+                                "Accept": "application/json",
+                                "Content-Type": "application/json",
+                                "Authorization": "Bearer 5b4840c4797ec945735ee02f7bca6d76d1da4aad1fb00cf275ffde02a10eec94"
+                            },
+                        };
+
+                        $.ajax(settings).done(function (response) {
+                            console.log(response);
+                            $("#btn1").click();
+                        });
+                    })
+
+                    //#######################################3 for update data
+
+                    $("#upd" + value.id).click(function (id) {
+
+                        var settings = {
+                            "url": "https://gorest.co.in/public/v2/users/" + value.id,
+                            "method": "GET",
+                            "timeout": 0,
+                            "headers": {
+                                "Accept": "application/json",
+                                "Content-Type": "application/json",
+                                "Authorization": "Bearer 5b4840c4797ec945735ee02f7bca6d76d1da4aad1fb00cf275ffde02a10eec94"
+                            },
+
+                        };
+                        $.ajax(settings).done(function (apidata) {
+
+
+
+                            $("#form").show();
+                            $("#postbtn").hide();
+                            $("#updatebtn").show();
+
+                            $("#fullname").val(value.name);
+                            $("#email").val(value.email);
+
+
+                        });
+
+                        $("#updatebtn").click(function () {
+                            var n = $("#fullname").val();
+                            var e = $("#email").val();
+                            var s = $("input[name='status']:checked").val();
+                            console.log(value.id);
+
+
+                            var settings = {
+                                "url": "https://gorest.co.in/public/v2/users/" + value.id,
+                                "method": "PATCH",
+                                "timeout": 0,
+                                "headers": {
+                                    "Accept": "application/json",
+                                    "Content-Type": "application/json",
+                                    "Authorization": "Bearer 5b4840c4797ec945735ee02f7bca6d76d1da4aad1fb00cf275ffde02a10eec94"
+                                },
+
+                                "data": JSON.stringify({
+                                    "name": n,
+                                    "email": e,
+                                    "status": s
+                                }),
+
+                            };
+
+                            $.ajax(settings).done(function (response) {
+
+                                $("#btn1").click();
+                                console.log(response);
+                            });
+
+
+
+                        });
+
+
+
+
+
+
+
+
+                    });
+
+
+
+
+
+
+
+                });
+
+
+            });
+
+
+
+
+
+        })
+
+
+        //#######################################     function for Post DATA
+        $("#sub").click(function () {
+            $("#form").show();
+
+            $("#postbtn").click(function () {
+                var n = $("#fullname").val();
+                var e = $("#email").val();
+                var g = $("input[name='gende']:checked").val();
+                var s = $("input[name='status']:checked").val();
+
+                var settings = {
+                    "url": "https://gorest.co.in/public/v2/users",
+                    "method": "POST",
+                    "timeout": 0,
+                    "headers": {
+                        "Accept": "application/json",
+                        "Content-Type": "application/json",
+                        "Authorization": "Bearer 5b4840c4797ec945735ee02f7bca6d76d1da4aad1fb00cf275ffde02a10eec94"
+                    },
+                    "data": JSON.stringify({
+                        "name": n,
+                        "gender": g,
+                        "email": e,
+                        "status": s
+                    }),
+                };
+
+                $.ajax(settings).done(function (response) {
+
+                    alert("data posted");
+                    $("#btn1").click();
+
+
+
+
+
+                });
+
+
+
+
+
+            });
+
+
+        });
+
+
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+    });
+</script>
+
+</html>

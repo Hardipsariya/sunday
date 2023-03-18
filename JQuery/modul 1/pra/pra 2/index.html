@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <title>JQ p-2</title>
+</head>
+
+<body>
+    <form>
+        <div id="div1">
+            <label for="">Please select your technology</label><br>
+            <input type="radio" name="tech" id="PHP" value="PHP">PHP
+            <input type="radio" name="tech" id="ASP.NET" value="ASP.NET">ASP.NET
+            <input type="radio" name="tech" id="ASP" value="ASP">ASP
+            <input type="radio" name="tech" id="JSP" value="JSP">JSP
+            <input type="radio" name="tech" id="PERL" value="PERL">PERL
+            <input type="radio" name="tech" id="Cold-Fusion" value="Cold-Fusion">Cold Fusion
+            <input type="radio" name="tech" id="Other" value="Other">Other
+        </div>
+
+        <p id="p2"></p>
+        <div id="div2">
+            <span id="PHP">your selected technology is PHP</span>
+            <span id="ASP.NET">your selected technology is ASP.NET</span>
+            <span id="ASP">your selected technology is ASP</span>
+            <span id="JSP">your selected technology is JSP</span>
+            <span id="PERL">your selected technology is PERL</span>
+            <span id="Cold-Fusion">your selected technology is Cold Fusion</span>
+            <span id="Other">your selected technology is Other</span>
+        </div>
+        <span for="">You have selected :</span>
+        <p id="p1" style="display: inline-block;"></p> <br>
+        <input type="button" value="submit" id="btn1">
+    </form>
+
+
+
+
+
+</body>
+<script>
+    $(document).ready(function () {
+        $("#div2").hide();
+
+        $("#btn1").click(function () {
+            $("#p1").text($('input:radio[name]:checked').val());
+
+        });
+
+
+        $("#btn1").click(function () {
+            var a = $('input:radio[id]:checked').val();
+            console.log(a);
+            $("#p2").text("your selected technology is " + a);
+
+
+
+        });
+
+    });
+
+</script>
+
+</html>

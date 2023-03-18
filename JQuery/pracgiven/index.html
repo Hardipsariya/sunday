@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    <ul>
+        <li id="lifood">food item is</li>
+        <li id="liele">electronic item is</li>
+        
+
+    </ul>
+    <button id="btn">click to show item</button>
+</body>
+<script>
+    $(document).ready(function(){
+        $("#btn").click(function(){
+            $.getJSON(
+             "new.json",
+            
+            function(jsdata){
+                $.each(jsdata,function(key,value){
+                   
+                  if(value.percentId==1){
+                    $("#lifood").append("<ul><li>"+ value.productName +" "+ value.details+value.price+"</li></ul>");
+                  }
+                  if(value.percentId==2){
+                    $("#liele").append("<ul><li>"+ value.productName +" "+ value.details+value.price+"</li></ul>");
+                  }
+                });
+            }
+            
+         )
+         $("#btn").hide();
+        })
+            
+        
+    });
+
+    // console.log(  $("ul").append("<li>"+value.productName+value.details+value.price+"</li>"));
+
+    // <!-- $.getJSON(
+    //         "new.json",
+            
+    //         function(jsdata){
+    //             $.each(jsdata,function(key,value){
+    //              if($(value.percentId==1)){
+    //                 console.log($(value.percentId));
+    //              }
+    //             });
+    //         }
+    //     ) -->
+</script>
+</html>

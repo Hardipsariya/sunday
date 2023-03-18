@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>api using JQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    <Ul>
+       
+    </Ul>
+
+    <!-- <select>
+        <option value="">plz select price</option>
+    </select> -->
+
+    <table style="border: 1px solid black;">
+        <thead >
+            <tr>
+                <th style="border: 1px solid black;">
+                    <td>id</td>
+                <td>name</td>
+
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr id="tr1" >
+                <td ></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+<script>
+    $(document).ready(function(){
+        
+        $.getJSON(
+            "my.json",
+            
+            function(apidata){
+                console.log(apidata);
+                $.each(apidata,function(key,value){
+                    $("tbody").append("<tr><td>"+value.id +"</td><td> "  +value.name +"</td ><tr>");
+                    // $("<td/>").html(value.id + " "+value.name).appendTo("#tr1");
+                });
+            }
+        )
+    });
+</script>
+</html>

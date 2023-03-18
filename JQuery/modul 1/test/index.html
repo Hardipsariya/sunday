@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task 2</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+    <input type="checkbox" class="checkbox" name="red" value="red" id="red">Red
+    <input type="checkbox" class="checkbox" name="Green" value="Green" id="Green">Green
+    <input type="checkbox" class="checkbox" name="Blue" value="blue" id="Blue">Blue
+    <input type="checkbox"class="checkbox"  name="Black" value="black" id="Black">Black
+   
+
+    <p id="colordis"></p>
+
+    <input type="radio" name="color" value="red" id="red">Red
+    <input type="radio" name="color" value="Green" id="Green">Green
+    <input type="radio" name="color" value="Blue"id="Blue">Blue
+    <input type="radio" name="color" value="Black" id="Black">Black
+
+    <p id="colorredio"></p>
+</body>
+<script>
+    $(document).ready(function(){
+        $(".checkbox").click(function(){
+          var a= $("input[type=radio]:checked").val();
+        //   
+        $("#colorredio").text(a+" "+" checked !")
+        });
+
+        $("input").click(function(){
+          var b= $("input[type=checkbox]:checked").val();
+        // console.log(b);  
+        $("#colordis").text(b+" "+" checked !")
+        });
+    });
+</script>
+</html>

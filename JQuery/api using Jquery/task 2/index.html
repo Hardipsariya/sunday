@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>task 2</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+
+<body>
+    <!-- <input type="checkbox" name="color" id="Red">Red
+    <input type="checkbox" name="color" id="green">green
+    <input type="checkbox" name="color" id="Blue">blue
+    <input type="checkbox" name="color" id="black">black
+    <p id="p1"></p> -->
+
+
+
+    <p>Choose your vehicle:</p>
+    <div>
+    <input type="checkbox" id="bike" name="vehicle" value="bike">
+    <label for="bike">Bike</label>
+    </div>
+    <div>
+    <input type="checkbox" id="scooter" name="vehicle" value="scooter">
+    <label for="scooter">Scooter</label>
+    </div>
+    <div>
+    <input type="checkbox" id="car" name="vehicle" value="car">
+    <label for="car">Car</label>
+    </div>
+    <div>
+    <input type="checkbox" id="auto" name="vehicle" value="auto">
+    <label for="auto">Auto</label>
+    </div>
+    <div>
+    <button id="select">Select Two Wheelers</button>
+    </div>
+</body>
+<script>
+    // $(document).ready(function(){
+    //     var checkbox = `$(input[type=])`
+    // })
+
+
+    $(document).ready(function() {
+    $('#select').click(function() {
+        var checkboxes = $('input[type="checkbox"]').length;
+        alert(checkboxes);
+    })
+});
+</script>
+
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+
+<body>
+    <h3>select youre country</h3>
+    <form>
+        <select id="s1">
+            <option id="op1" onclick="test1()" value="Please-select">Please select</option>
+            <option value="India">India</option>
+            <option value="United Kingdom">United Kingdom</option>
+            <option value="U.S.A">U.S.A</option>
+            <option value="United Arab Emirates">United Arab Emirates</option>
+            <option value="Switzerland">Switzerland</option>
+        </select>
+        <br>
+        <br>
+        <br>
+        <br>
+        <div id="div-2">
+            <label for="">Your Selected Country :- </label>
+            <p id="pdis" style="display: inline-block;"></p> <p style="display: inline-block;" id="opd"></p>
+        </div>
+
+
+        <div>
+            <p id="p1"></p>
+        </div>
+
+
+    </form>
+</body>
+<script>
+    $(document).ready(function () {
+        const cun = ["India", "United Kingdom", "U.S.A", "United Arab Emirates", "Switzerland"];
+        $("#p1").text((cun));
+
+        // var b=$("#s1").click(function(){ ("selectedIndex", 0).val();
+
+        // });
+        // console.log(b);
+
+        //     function test1(){
+        //         console.log("fist selected");
+        //     };
+
+
+
+        $("#s1").click(function () {
+            $("#pdis").text($("#s1 option:selected").val());
+            var hh = $("#s1").val();
+
+            console.log(hh);
+            $("#p1").text((cun)).hide();
+            
+            if (hh == "Please-select") {
+                
+                $("#opd").text((cun));
+                $("#p1").hide();
+                $("#pdis").hide();
+
+            };
+
+
+        });
+
+        // $("#s1").click(function(){
+        //    $("#op1").click(function(){
+        //     console.log("fist option workin");
+        //    });
+        // });
+
+
+    }); 
+</script>
+
+</html>

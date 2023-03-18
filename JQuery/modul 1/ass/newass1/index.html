@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Ass 1</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+
+<body>
+    <select name="" id="s1">
+        <option value="Please select">Please select</option>
+    </select>
+
+    <label for="">Your Selected Country :</label>
+    <p id="p1"></p>
+</body>
+<script>
+    $("select").click(function () {
+        $.getJSON(
+            
+            "county.json",
+
+            function (condata) {
+                // console.log(condata);
+                $.each(condata, function (key, conname) {
+                    $("select").append("<option>" + conname.country1+"</option>"+"<option>" + conname.country2+"</option>"+"<option>" + conname.country3+"</option>"+"<option>" + conname.country4+"</option>"+"<option>" + conname.country5+"</option>");
+                    console.log(conname.country1);
+                    
+                })
+
+                // console.log($(conname.country1).val());
+            }
+
+           
+        )
+        $("#p1").text()
+    });
+</script>
+
+</html>

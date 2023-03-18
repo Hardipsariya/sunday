@@ -1,0 +1,54 @@
+[
+        {
+            "percentId":"2",
+            "productName": "Mobile",
+            "details": "god quality",
+            "price": "45000"
+        },
+        {
+            "percentId":"1",
+            "productName": "milk",
+            "details": "god quality",
+            "price": "100"
+        },
+        {
+            "percentId":"1",
+            "productName": "apple",
+            "details": "not good quality",
+            "price": "200"
+        },
+        {   "percentId":"1",
+            "productName": "Sandwich.",
+            "details": " good quality",
+            "price": "50"
+        },
+        {
+            "percentId":"2",
+            "productName": "TV",
+            "details": "god quality",
+            "price": "50000"
+        },
+        {
+            "percentId":"2",
+            "productName": "Laptops",
+            "details": "god quality",
+            "price": "250000"
+        },
+        {
+            "percentId":null,
+            "productName": "Ahmadabad.",
+            "details": "god quality",
+            "price": "250000"
+        },
+        {
+            "percentId":null,
+            "productName": "rajkot.",
+            "details": "god quality",
+            "price": "250000"
+        }
+    ]
+
+
+
+
+   

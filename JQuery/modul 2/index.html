@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <style>
+        table,td,tr{
+            border: 2px solid black;
+            border-collapse: collapse;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <thead>
+            <tr>
+                <td>part1</td>
+                <td>part2</td>
+                <td>part3</td>
+                <td>part4</td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+
+</body>
+<script>
+    var settings = {
+        "url": "https://gorest.co.in/public/v2/users",
+        "method": "GET",
+        "timeout": 0,
+    };
+
+    $.ajax(settings).done(function (response) {
+        $.each(response,function(key,value){
+            $("tbody").append("<tr><td>"+value.id+"</td>"+"<td>"+value.name+"</tr>")
+        })
+    });
+
+
+    var settings1 = {
+        "url": "https://gorest.co.in/public/v2/users",
+        "method": "POST",
+        "timeout": 0,
+    };
+
+    $.ajax(settings1).done(function (response) {
+        $.each(response,function(key,value){
+            $("tbody").append("<tr><td>"+value.id+"</td>"+"<td>"+value.name+"</tr>")
+        })
+    });
+</script>
+
+</html>
